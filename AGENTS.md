@@ -29,3 +29,19 @@ Run `python3 scripts/public_repo_guard.py --staged` before committing and
 `python3 scripts/public_repo_guard.py --history` before publication. Do not
 bypass hooks, weaken rules, or print secret matches. Review public issue/PR
 text and attachments too; Git checks cannot protect those surfaces.
+
+## Agent skills
+
+### Issue tracker
+
+Public issues and specs use GitHub Issues in `bajgai/biz-catalogue`.
+See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the five default triage labels. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Use a single-context layout: root `CONTEXT.md` and `docs/adr/`.
+See `docs/agents/domain.md`.
