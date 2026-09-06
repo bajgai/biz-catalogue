@@ -24,14 +24,16 @@ jobs:
           python-version: "3.13"
       - name: Install pinned guardrails
         run: |
-          pip install "git+https://github.com/bajgai/guardrails@v0.1.1"
-          python -m guardrails --version
+          # Immutable commit for v0.1.1 (tags are mutable).
+          pip install "git+https://github.com/bajgai/guardrails@98b53ddcc81ca9b1f676b83e9bcaada28c187a32"
+          python3 -P -m guardrails --version
       - name: Test publication boundaries
         run: python3 -m unittest discover -s tests
       - name: Inspect all history reachable from this commit
         run: |
-          python3 scripts/public_repo_guard.py --history HEAD
-          python3 -m guardrails check --history HEAD
+          # -P prevents a force-added checkout module from shadowing the install.
+          python3 -P scripts/public_repo_guard.py --history HEAD
+          python3 -P -m guardrails check --history HEAD
 
   secret-scan:
     name: Secret scan

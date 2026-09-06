@@ -25,24 +25,34 @@ def _translate(argv: list[str]) -> list[str]:
     )
 
 
+def _guardrails_available() -> bool:
+    # -P keeps a force-added checkout module from shadowing the install.
+    probe = subprocess.run(
+        [sys.executable, "-P", "-c", "import guardrails"],
+        capture_output=True,
+        check=False,
+    )
+    return probe.returncode == 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     try:
-        command = [sys.executable, "-m", "guardrails", *_translate(args)]
+        translated = _translate(args)
     except SystemExit as error:
         if isinstance(error.code, str):
             print(error.code, file=sys.stderr)
             return 2
         return int(error.code or 2)
-    try:
-        return subprocess.call(command)
-    except FileNotFoundError:
+    if not _guardrails_available():
         print(
             "BLOCKED: guardrails is not installed; install bajgai/guardrails "
             "through the declarative package policy.",
             file=sys.stderr,
         )
         return 2
+    command = [sys.executable, "-P", "-m", "guardrails", *translated]
+    return subprocess.call(command)
 
 
 if __name__ == "__main__":

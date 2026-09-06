@@ -2,4 +2,4 @@
 set -eu
 repo_root=$(git rev-parse --show-toplevel)
 cd "$repo_root"
-exec python3 -m guardrails hook pre-push
+exec python3 -P -m guardrails hook pre-push
