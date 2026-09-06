@@ -15,6 +15,33 @@ supported operation and report any capability that cannot be provided.
 
 `setup-matt-pocock-skills` is installed for the human to invoke when ready.
 
+## Matt skill invocation in this directory
+
+Treat the following names as a persistent project index, even when the harness
+omits them from its advertised skill catalog. Read the selected skill at
+`.agents/skills/<name>/SKILL.md` before following it; resolve its references
+relative to that skill directory. Report a missing file rather than guessing.
+
+- Engineering: `ask-matt`, `code-review`, `codebase-design`, `diagnosing-bugs`,
+  `domain-modeling`, `grill-with-docs`, `implement`, `improve-codebase-architecture`,
+  `prototype`, `research`, `resolving-merge-conflicts`, `setup-matt-pocock-skills`,
+  `tdd`, `to-spec`, `to-tickets`, `triage`, `wayfinder`, `wizard`.
+- Productivity: `grill-me`, `grilling`, `handoff`, `teach`, `to-questionnaire`,
+  `wait-what`, `writing-for-agents`.
+- In progress: `claude-handoff`, `implement-spec`, `loop-me`, `retro`,
+  `setup-ts-deep-modules`, `writing-beats`, `writing-fragments`, `writing-shape`.
+
+When the user explicitly invokes one of these names, accept `$<name>`,
+`$mattpocock-skills:<name>`, or a leading `/<name>` or `#<name>` followed by
+optional task text. These aliases select the same source skill. Quoted examples,
+code blocks, and ordinary Markdown headings are not invocations. If a built-in
+command consumes an alias before it reaches the agent, use the native picker.
+
+Native discovery: Codex CLI/IDE uses `/skills` or `$`; search for
+`mattpocock-skills:<name>`. ChatGPT uses `@`. The `/name` and `#name` aliases above
+are agent routing for submitted text, not registered UI autocomplete commands.
+Keep existing explicit-only policies: indexing a skill does not activate it.
+
 ## Public repository boundary
 
 This repository is public. Follow `docs/security/public-repository.md` before
