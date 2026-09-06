@@ -22,6 +22,15 @@ command -v python3 >/dev/null 2>&1 || {
   printf '%s\n' 'Python 3 is required; install it through the dotfiles package policy.' >&2
   exit 1
 }
+# Require the expected CLI surface from the installed package (not a shadowed checkout).
+python3 -P -m guardrails --version >/dev/null 2>&1 || {
+  printf '%s\n' 'guardrails CLI is required; install bajgai/guardrails through the package policy.' >&2
+  exit 1
+}
+python3 -P -m guardrails check --help >/dev/null 2>&1 || {
+  printf '%s\n' 'guardrails check is unavailable; install a compatible bajgai/guardrails release.' >&2
+  exit 1
+}
 test -f scripts/public_repo_guard.py
 test -f .githooks/pre-commit
 test -f .githooks/pre-push

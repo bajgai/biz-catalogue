@@ -25,8 +25,9 @@ Keep those inputs in authorized private storage outside the checkout; use
 invented examples only. Local skill installations remain excluded from Git.
 
 Review every new public path before adding it to `.public-repo-policy.json`.
-Run `python3 scripts/public_repo_guard.py --staged` before committing and
-`python3 scripts/public_repo_guard.py --history` before publication. Do not
+Run `python3 -m guardrails check --staged` before committing and
+`python3 -m guardrails check --history` before publication (the legacy
+`scripts/public_repo_guard.py` wrapper remains available). Do not
 bypass hooks, weaken rules, or print secret matches. Review public issue/PR
 text and attachments too; Git checks cannot protect those surfaces.
 

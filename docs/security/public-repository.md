@@ -17,7 +17,9 @@ generated bundles, database seed scripts, or documentation.
 ## Gates
 
 - `.public-repo-policy.json` lists every allowed public path. Unknown files fail.
-- The Python guard inspects staged Git objects, not just working files. Forced
+- Publication checks use the shared [`bajgai/guardrails`](https://github.com/bajgai/guardrails)
+  CLI (pinned in CI). `scripts/public_repo_guard.py` remains a compatibility wrapper.
+- The guard inspects staged Git objects, not just working files. Forced
   additions still undergo the same checks.
 - It rejects prohibited paths and data formats, symlinks/submodules, binary or
   oversized files, and common credential patterns. Messages identify the rule
@@ -52,6 +54,9 @@ Do not put secrets in client-side or public-prefixed environment variables.
 ```sh
 sh scripts/install-hooks.sh
 python3 -m unittest discover -s tests
+python3 -m guardrails check --staged
+python3 -m guardrails check --history
+# Compatibility wrapper (same gates):
 python3 scripts/public_repo_guard.py --staged
 python3 scripts/public_repo_guard.py --history
 ```

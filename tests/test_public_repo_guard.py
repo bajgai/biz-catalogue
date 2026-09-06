@@ -30,6 +30,13 @@ class PublicRepoGuardTests(unittest.TestCase):
                         GIT_AUTHOR_EMAIL="test@example.invalid",
                         GIT_COMMITTER_NAME="Guard Test",
                         GIT_COMMITTER_EMAIL="test@example.invalid")
+        # Only use a source checkout when explicitly requested.
+        dev_src = os.environ.get("GUARDRAILS_DEV_SRC", "").strip()
+        if dev_src:
+            existing = self.env.get("PYTHONPATH", "")
+            self.env["PYTHONPATH"] = (
+                dev_src if not existing else dev_src + os.pathsep + existing
+            )
         self.git("init", "-q", "-b", "main")
         self.approve("README.md")
         self.write("README.md", "Public project documentation.\n")
