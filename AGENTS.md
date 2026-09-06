@@ -61,7 +61,8 @@ text and attachments too; Git checks cannot protect those surfaces.
 
 ### Issue tracker
 
-Public issues and specs use GitHub Issues in `bajgai/biz-catalogue`.
+Use GitHub Issues/PRs for public work, local Markdown for private research and
+drafts, and the `agentctl` board for task ownership and execution coordination.
 See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
