@@ -24,7 +24,7 @@ jobs:
           python-version: "3.13"
       - name: Install pinned guardrails
         run: |
-          pip install "git+https://github.com/bajgai/guardrails@v0.1.0"
+          pip install "git+https://github.com/bajgai/guardrails@v0.1.1"
           python -m guardrails --version
       - name: Test publication boundaries
         run: python3 -m unittest discover -s tests
