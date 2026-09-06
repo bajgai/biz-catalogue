@@ -1,0 +1,4 @@
+title = "Biz Catalogue public repository secret scanning"
+
+[extend]
+useDefault = true
