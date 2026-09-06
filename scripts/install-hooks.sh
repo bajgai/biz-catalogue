@@ -22,6 +22,10 @@ command -v python3 >/dev/null 2>&1 || {
   printf '%s\n' 'Python 3 is required; install it through the dotfiles package policy.' >&2
   exit 1
 }
+python3 -c 'import guardrails' 2>/dev/null || {
+  printf '%s\n' 'guardrails is required; install bajgai/guardrails through the package policy.' >&2
+  exit 1
+}
 test -f scripts/public_repo_guard.py
 test -f .githooks/pre-commit
 test -f .githooks/pre-push

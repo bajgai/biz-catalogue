@@ -13,6 +13,9 @@ PROJECT = Path(__file__).resolve().parents[1]
 SCANNER = PROJECT / "scripts" / "public_repo_guard.py"
 INSTALLER = PROJECT / "scripts" / "install-hooks.sh"
 POLICY = ".public-repo-policy.json"
+GUARDRAILS_SRC = Path(
+    os.environ.get("GUARDRAILS_DEV_SRC", str(Path.home() / "src/projects/guardrails/src"))
+)
 
 
 def synthetic_credential():
@@ -30,6 +33,13 @@ class PublicRepoGuardTests(unittest.TestCase):
                         GIT_AUTHOR_EMAIL="test@example.invalid",
                         GIT_COMMITTER_NAME="Guard Test",
                         GIT_COMMITTER_EMAIL="test@example.invalid")
+        if GUARDRAILS_SRC.is_dir():
+            existing = self.env.get("PYTHONPATH", "")
+            self.env["PYTHONPATH"] = (
+                str(GUARDRAILS_SRC)
+                if not existing
+                else str(GUARDRAILS_SRC) + os.pathsep + existing
+            )
         self.git("init", "-q", "-b", "main")
         self.approve("README.md")
         self.write("README.md", "Public project documentation.\n")
