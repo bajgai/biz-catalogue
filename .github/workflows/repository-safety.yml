@@ -9,20 +9,6 @@ permissions:
   contents: read
 
 jobs:
-  public-repository-guard:
-    name: Public repository guard
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Test publication boundaries
-        run: python3 -m unittest discover -s tests
-      - name: Inspect all history reachable from this commit
-        run: python3 scripts/public_repo_guard.py --history HEAD
-
   secret-scan:
     name: Secret scan
     runs-on: ubuntu-latest

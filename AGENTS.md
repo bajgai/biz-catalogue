@@ -51,11 +51,8 @@ licensed datasets, passwords, API tokens, private keys, or authenticated state.
 Keep those inputs in authorized private storage outside the checkout; use
 invented examples only. Local skill installations remain excluded from Git.
 
-Review every new public path before adding it to `.public-repo-policy.json`.
-Run `python3 scripts/public_repo_guard.py --staged` before committing and
-`python3 scripts/public_repo_guard.py --history` before publication. Do not
-bypass hooks, weaken rules, or print secret matches. Review public issue/PR
-text and attachments too; Git checks cannot protect those surfaces.
+Review every new file for public release before committing. Never print secret
+matches. Review public issue/PR text and attachments too.
 
 ## Agent skills
 

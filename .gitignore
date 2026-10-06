@@ -2,8 +2,6 @@
 /*
 !/.gitignore
 !/.gitleaks.toml
-!/.public-repo-policy.json
-!/.githooks/
 !/.github/
 !/AGENTS.md
 !/README.md

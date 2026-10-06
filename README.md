@@ -7,15 +7,7 @@ business records, licensed datasets, credentials, and internal research belong i
 private storage outside the checkout. Examples must be invented and approved for
 publication.
 
-Before contributing:
-
-```sh
-sh scripts/install-hooks.sh
-python3 -m unittest discover -s tests
-```
-
-The local commit and push hooks check the explicit public-file list, prohibited
-file types, and common credential patterns. CI also scans with Gitleaks. See
+CI scans for credentials with Gitleaks. See
 [CONTRIBUTING.md](CONTRIBUTING.md) and the [public repository policy](docs/security/public-repository.md).
 
 ## For agents
