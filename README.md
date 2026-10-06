@@ -16,7 +16,7 @@ CI scans for credentials with Gitleaks. See
   open pull requests, and `docs/` (conventions in [docs/agents/](docs/agents/)).
   A current-phase status issue is pinned in the tracker.
 - **Private state**: internal working notes (validation plans, findings, and
-  strategy) live in gitignored local paths and are never committed or posted
+  strategy) live in git-ignored local paths and are never committed or posted
   publicly. See the [public repository policy](docs/security/public-repository.md).
 - **Coordination**: this repository is enrolled in `agentctl`. Run `agentctl brief`
   before substantial work, claim tasks before starting them, and leave notes at
