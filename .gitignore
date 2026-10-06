@@ -2,13 +2,12 @@
 /*
 !/.gitignore
 !/.gitleaks.toml
-!/.public-repo-policy.json
-!/.githooks/
 !/.github/
 !/AGENTS.md
 !/README.md
 !/SECURITY.md
 !/CONTRIBUTING.md
+!/CONTEXT.md
 !/docs/
 !/scripts/
 !/tests/
